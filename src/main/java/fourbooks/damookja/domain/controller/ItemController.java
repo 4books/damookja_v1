@@ -19,11 +19,6 @@ public class ItemController {
         this.itemService = itemService;
     }
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<String> handleEntityNotFoundException(EntityNotFoundException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
-    }
-
     @GetMapping
     public ResponseEntity<List<Item>> getAll() {
         return new ResponseEntity<>(itemService.findAll(), HttpStatus.OK);
