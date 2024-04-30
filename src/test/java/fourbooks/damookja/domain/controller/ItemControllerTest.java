@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
+@Transactional
 class ItemControllerTest {
 
     @Autowired
@@ -24,7 +25,6 @@ class ItemControllerTest {
     private ItemService itemService;
 
     @Test
-    @Transactional
     void Item을_등록하면_해당_Item의_조회_및_동일해야함() {
         // Given
         Item item = Item.builder()
