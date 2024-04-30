@@ -2,7 +2,6 @@ package fourbooks.damookja.domain.controller;
 
 import fourbooks.damookja.domain.Item;
 import fourbooks.damookja.domain.service.ItemService;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,18 +35,12 @@ public class ItemController {
 
     @PostMapping
     public ResponseEntity<Item> createItem(@RequestBody Item saveItem) {
-        try {
-            Item savedItem = itemService.save(saveItem);
-            return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return new ResponseEntity<>(itemService.save(saveItem), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable("id") Long id, @RequestBody Item updateItem) {
-        Item updatedItem = itemService.updateItem(id, updateItem);
-        return new ResponseEntity<>(updatedItem, HttpStatus.OK);
+        return new ResponseEntity<>(itemService.updateItem(id, updateItem), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
