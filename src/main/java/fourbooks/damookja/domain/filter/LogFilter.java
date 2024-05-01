@@ -30,5 +30,7 @@ public class LogFilter implements Filter {
         } finally {
             log.info("[RESPONSE] {}", requestURI);
         }
+
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }
