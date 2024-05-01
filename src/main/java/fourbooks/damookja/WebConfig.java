@@ -23,8 +23,8 @@ public class WebConfig implements WebMvcConfigurer {
     public FilterRegistrationBean<Filter> logFilter(){
         FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
         filterRegistrationBean.setFilter(new LogFilter());
-        filterRegistrationBean.setOrder(2);
-        filterRegistrationBean.addUrlPatterns("/*");
+        filterRegistrationBean.setOrder(1);
+        filterRegistrationBean.addUrlPatterns("/**");
 
         return filterRegistrationBean;
     }
