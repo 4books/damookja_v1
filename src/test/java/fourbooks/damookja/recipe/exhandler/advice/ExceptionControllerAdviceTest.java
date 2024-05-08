@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class ExControllerAdviceTest {
+class ExceptionControllerAdviceTest {
 
     @InjectMocks
     private RecipeController recipeController;

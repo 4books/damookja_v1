@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.stream.Collectors;
 
 @Slf4j
-@RestControllerAdvice("fourbooks.damookja.domain.controller")
-public class ExControllerAdvice {
+@RestControllerAdvice("fourbooks.damookja.application.port.in.web.controller")
+public class ExceptionControllerAdvice {
 
     @ExceptionHandler(RecipeNotFoundException.class)
     public ResponseEntity<ErrorResult> handleItemNotFoundException(RecipeNotFoundException ex) {

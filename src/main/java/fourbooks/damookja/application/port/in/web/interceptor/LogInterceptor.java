@@ -13,12 +13,16 @@ public class LogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
+        log.info("[INTERCEPTOR PRE HANDLE] {}", requestURI);
+
         if(requestURI.endsWith("/error")) { //인터셉터 테스트 에러일 땐 어떻게 동작하는지 보기 위해서
-            log.warn("Invalid request URI: {}", requestURI);
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid request URI");
+            log.error("{} 가 호출됨!", request.getRequestURI());
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN); //권한 없음
+            response.getWriter().write("Forbidden error!");
+            response.getWriter().flush();
+            response.getWriter().close();
             return false;
         }
-        log.info("[INTERCEPTOR PRE HANDLE] {}", requestURI);
         return true;
     }
 
