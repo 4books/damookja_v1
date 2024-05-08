@@ -1,4 +1,4 @@
-package fourbooks.damookja;
+package fourbooks.damookja.DataInitializer;
 
 import fourbooks.damookja.domain.Recipe;
 import fourbooks.damookja.infrastructure.persistence.RecipeRepository;
@@ -12,27 +12,27 @@ import java.util.*;
 
 @Component
 @Slf4j
-public class DataInitializer {
+public class ItemInitializer {
 
-    private final RecipeRepository itemRepository;
+    private final RecipeRepository recipeRepository;
 
     @Autowired
-    public DataInitializer(RecipeRepository itemRepository) {
-        this.itemRepository = itemRepository;
+    public ItemInitializer(RecipeRepository recipeRepository) {
+        this.recipeRepository = recipeRepository;
     }
 
     @PostConstruct
     public void initialize() {
-        List<Recipe> items = new ArrayList<>();
+        List<Recipe> recipes = new ArrayList<>();
 
-        items.add(createItem("1번", 10L, 100));
-        items.add(createItem("2번", 20L, 200));
-        items.add(createItem("3번", 30L, 300));
+        recipes.add(createRecipe("1번", 10L, 100));
+        recipes.add(createRecipe("2번", 20L, 200));
+        recipes.add(createRecipe("3번", 30L, 300));
 
-        itemRepository.saveAll(items);
+        recipeRepository.saveAll(recipes);
     }
 
-    private Recipe createItem(String name, long price, int stockCount) {
+    private Recipe createRecipe(String name, long price, int stockCount) {
         return Recipe.builder()
                 .name(name)
                 .price(price)
