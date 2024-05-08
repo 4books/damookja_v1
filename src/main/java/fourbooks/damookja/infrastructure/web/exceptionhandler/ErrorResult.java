@@ -1,4 +1,4 @@
-package fourbooks.damookja.domain.exhandler;
+package fourbooks.damookja.infrastructure.web.exceptionhandler;
 
 import lombok.*;
 

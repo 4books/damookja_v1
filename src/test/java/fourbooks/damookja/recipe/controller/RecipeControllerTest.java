@@ -1,7 +1,8 @@
-package fourbooks.damookja.domain.controller;
+package fourbooks.damookja.recipe.controller;
 
-import fourbooks.damookja.domain.Item;
-import fourbooks.damookja.domain.service.ItemService;
+import fourbooks.damookja.application.port.in.web.controller.RecipeController;
+import fourbooks.damookja.domain.Recipe;
+import fourbooks.damookja.application.service.RecipeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,36 +10,35 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Transactional
-class ItemControllerTest {
+class RecipeControllerTest {
 
     @Autowired
-    private ItemController itemController;
+    private RecipeController recipeController;
 
     @Autowired
-    private ItemService itemService;
+    private RecipeService recipeService;
 
     @Test
     void Item을_등록하면_해당_Item의_조회_및_동일해야함() {
         // Given
-        Item item = Item.builder()
+        Recipe recipe = Recipe.builder()
                 .name("Test Item")
                 .stockCount(10)
-                .price(BigDecimal.valueOf(99.99))
+                .price(99L)
                 .createdAt(LocalDateTime.now())
                 .build();
 
-        Item savedItem = itemService.save(item);
+        Recipe savedItem = recipeService.save(recipe);
         Long id = savedItem.getId();
 
         // When
-        ResponseEntity<Item> response = itemController.getItemById(id);
+        ResponseEntity<Recipe> response = recipeController.getItemById(id);
 
         // Then
         assertEquals(HttpStatus.OK, response.getStatusCode());

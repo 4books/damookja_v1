@@ -1,32 +1,22 @@
-package fourbooks.damookja;
+package fourbooks.damookja.infrastructure.config;
 
-import fourbooks.damookja.domain.filter.LogFilter;
-import fourbooks.damookja.domain.interceptor.LogInterceptor;
+import fourbooks.damookja.infrastructure.web.filter.LogFilter;
 import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LogInterceptor())
-                .order(1)
-                .addPathPatterns("/**");
-    }
+public class FilterConfig implements WebMvcConfigurer {
 
     @Bean
     public FilterRegistrationBean<Filter> logFilter(){
         FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
         filterRegistrationBean.setFilter(new LogFilter());
         filterRegistrationBean.setOrder(1);
-        filterRegistrationBean.addUrlPatterns("/**");
+        filterRegistrationBean.addUrlPatterns("/*");
 
         return filterRegistrationBean;
     }
-
 }

@@ -1,4 +1,4 @@
-package fourbooks.damookja.domain.filter;
+package fourbooks.damookja.infrastructure.web.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,9 +26,9 @@ public class LogFilter implements Filter {
         String requestURI = request.getRequestURI();
 
         try {
-            log.info("[REQUEST] {}", requestURI);
+            log.info("[FILTER REQUEST] {}", requestURI);
         } finally {
-            log.info("[RESPONSE] {}", requestURI);
+            log.info("[FILTER RESPONSE] {}", requestURI);
         }
 
         filterChain.doFilter(servletRequest, servletResponse);
