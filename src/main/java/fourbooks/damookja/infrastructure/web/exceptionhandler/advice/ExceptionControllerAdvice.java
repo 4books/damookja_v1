@@ -2,7 +2,7 @@ package fourbooks.damookja.infrastructure.web.exceptionhandler.advice;
 
 
 import fourbooks.damookja.infrastructure.web.exceptionhandler.ErrorResult;
-import fourbooks.damookja.application.exception.RecipeNotFoundException;
+import fourbooks.damookja.domain.exception.RecipeNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;

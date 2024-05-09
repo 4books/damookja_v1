@@ -1,8 +1,8 @@
 package fourbooks.damookja.recipe.exhandler.advice;
 
 import fourbooks.damookja.application.port.in.web.controller.RecipeController;
-import fourbooks.damookja.application.exception.RecipeNotFoundException;
-import fourbooks.damookja.application.service.RecipeService;
+import fourbooks.damookja.domain.exception.RecipeNotFoundException;
+import fourbooks.damookja.application.service.DefaultRecipeService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -18,14 +18,14 @@ class ExceptionControllerAdviceTest {
     private RecipeController recipeController;
 
     @Mock
-    private RecipeService recipeService;
+    private DefaultRecipeService recipeService;
 
     @Test
     void Item이_없으면_ItemNotFoundException_발생해야함() {
         // Given
         Long id = Long.MAX_VALUE;
         String errorMessage = "Item not found with id: " + id;
-        when(recipeService.findById(id)).thenThrow(new RecipeNotFoundException(errorMessage));
+        when(recipeService.findRecipeById(id)).thenThrow(new RecipeNotFoundException(errorMessage));
 
         // When & Then
         assertThrows(RecipeNotFoundException.class, () -> recipeController.getItemById(id));

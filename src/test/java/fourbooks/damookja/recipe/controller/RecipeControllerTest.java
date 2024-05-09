@@ -2,7 +2,7 @@ package fourbooks.damookja.recipe.controller;
 
 import fourbooks.damookja.application.port.in.web.controller.RecipeController;
 import fourbooks.damookja.domain.Recipe;
-import fourbooks.damookja.application.service.RecipeService;
+import fourbooks.damookja.application.service.DefaultRecipeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +22,7 @@ class RecipeControllerTest {
     private RecipeController recipeController;
 
     @Autowired
-    private RecipeService recipeService;
+    private DefaultRecipeService recipeService;
 
     @Test
     void Item을_등록하면_해당_Item의_조회_및_동일해야함() {

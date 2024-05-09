@@ -1,6 +1,6 @@
 package fourbooks.damookja.domain;
 
-import fourbooks.damookja.domain.enums.UserActive;
+import fourbooks.damookja.domain.enums.Active;
 import fourbooks.damookja.domain.enums.UserType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -10,7 +10,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 @Getter
 @Builder
 @EqualsAndHashCode
@@ -37,16 +37,16 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     @NotEmpty(message = "이메일은 필수예요.")
     @Email(message = "이메일을 올바르게 작성해 주세요.")
     private String email;
 
-    @Column(name = "login_attempts", columnDefinition = "INT DEFAULT 0")
-    private Integer loginAttempts = 0;
+    @Column(name = "login_try_count", columnDefinition = "INT DEFAULT 0")
+    private Integer loginTryCount = 0;
 
     @Column(name = "is_active")
-    private UserActive isActive;
+    private Active isActive;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_type")
@@ -57,4 +57,24 @@ public class User {
 
     @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
+
+    public Integer plusLoginTryCount(){
+        this.loginTryCount++;
+        return this.loginTryCount;
+    }
+    public void clearLoginTryCount(){
+        this.loginTryCount = 0;
+    }
+    public void lockUser(){
+        this.isActive = Active.LOCK;
+    }
+    public void inActiveUser(){
+        this.isActive = Active.NO;
+    }
+    public void initUser(){
+        this.isActive = Active.INIT;
+    }
+    public void activeUser(){
+        this.isActive = Active.YES;
+    }
 }

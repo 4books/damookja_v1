@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Entity
+@Table(name = "recipe")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +17,10 @@ import java.time.LocalDateTime;
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "recipe_id")
+    @Column(name = "recipe_id", nullable = false, updatable = false)
     private Long id;
 
+    @Column(name = "recipe_name", nullable = false)
     @NotEmpty(message = "Name is required")
     private String name;
 

@@ -1,6 +1,6 @@
-package fourbooks.damookja.application.exception;
+package fourbooks.damookja.domain.exception;
 
-public class RecipeNotFoundException extends RuntimeException{
+public class RecipeNotFoundException extends ItemNotFoundException {
     public RecipeNotFoundException() {
         super();
     }
