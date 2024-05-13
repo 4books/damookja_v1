@@ -1,6 +1,6 @@
 package fourbooks.damookja.recipe.exhandler.advice;
 
-import fourbooks.damookja.application.port.in.web.controller.RecipeController;
+import fourbooks.damookja.application.port.in.api.controller.RecipeController;
 import fourbooks.damookja.domain.exception.RecipeNotFoundException;
 import fourbooks.damookja.application.service.DefaultRecipeService;
 import org.junit.jupiter.api.Test;

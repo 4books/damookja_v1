@@ -3,6 +3,7 @@ package fourbooks.damookja.application.service;
 import fourbooks.damookja.domain.Recipe;
 import fourbooks.damookja.domain.exception.RecipeNotFoundException;
 import fourbooks.damookja.infrastructure.persistence.RecipeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,13 +12,10 @@ import java.util.List;
 
 @Transactional(readOnly = true)
 @Service
+@RequiredArgsConstructor
 public class DefaultRecipeService implements RecipeService {
 
     private final RecipeRepository recipeRepository;
-
-    public DefaultRecipeService(RecipeRepository recipeRepository) {
-        this.recipeRepository = recipeRepository;
-    }
 
     @Transactional
     public Recipe save(Recipe saveItem) {

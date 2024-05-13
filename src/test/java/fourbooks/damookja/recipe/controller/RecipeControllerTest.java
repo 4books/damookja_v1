@@ -1,6 +1,6 @@
 package fourbooks.damookja.recipe.controller;
 
-import fourbooks.damookja.application.port.in.web.controller.RecipeController;
+import fourbooks.damookja.application.port.in.api.controller.RecipeController;
 import fourbooks.damookja.domain.Recipe;
 import fourbooks.damookja.application.service.DefaultRecipeService;
 import org.junit.jupiter.api.Test;
