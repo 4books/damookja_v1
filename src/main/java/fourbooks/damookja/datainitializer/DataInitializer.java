@@ -1,4 +1,4 @@
-package fourbooks.damookja.DataInitializer;
+package fourbooks.damookja.datainitializer;
 
 import fourbooks.damookja.domain.Recipe;
 import fourbooks.damookja.infrastructure.persistence.RecipeRepository;
@@ -12,12 +12,12 @@ import java.util.*;
 
 @Component
 @Slf4j
-public class RecipeInitializer {
+public class DataInitializer {
 
     private final RecipeRepository recipeRepository;
 
     @Autowired
-    public RecipeInitializer(RecipeRepository recipeRepository) {
+    public DataInitializer(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 
