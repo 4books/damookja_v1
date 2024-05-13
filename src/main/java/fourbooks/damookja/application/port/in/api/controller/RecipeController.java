@@ -32,14 +32,16 @@ public class RecipeController {
         return new ResponseEntity<>(recipeService.findByNameContaining(name), HttpStatus.OK);
     }
 
+    //TODO Entity 노출되지 않게 DTO로 변경
     @PostMapping
-    public ResponseEntity<Recipe> createItem(@Valid @RequestBody Recipe saveItem) {
-        return new ResponseEntity<>(recipeService.save(saveItem), HttpStatus.CREATED);
+    public ResponseEntity<Recipe> createItem(@Valid @RequestBody Recipe saveRecipeParam) {
+        return new ResponseEntity<>(recipeService.save(saveRecipeParam), HttpStatus.CREATED);
     }
 
+    //TODO Entity 노출되지 않게 DTO로 변경
     @PutMapping("/{id}")
-    public ResponseEntity<Recipe> updateItem(@PathVariable("id") Long id, @RequestBody Recipe updateItem) {
-        return new ResponseEntity<>(recipeService.updateRecipe(id, updateItem), HttpStatus.OK);
+    public ResponseEntity<Recipe> updateItem(@PathVariable("id") Long id, @RequestBody Recipe updateRecipeParam) {
+        return new ResponseEntity<>(recipeService.updateRecipe(id, updateRecipeParam), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
